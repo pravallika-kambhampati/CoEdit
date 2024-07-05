@@ -9,8 +9,15 @@ const EditorComponent = () => {
     setEditorContent(value);
   };
 
+  const headingStyle = {
+    fontFamily:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    textAlign: "left",
+  };
+
   return (
     <div>
+      <h1 style={headingStyle}>CoEdit</h1>
       <ReactQuill value={editorContent} onChange={handleChange} theme="snow" />
     </div>
   );
