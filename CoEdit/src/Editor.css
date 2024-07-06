@@ -1,0 +1,10 @@
+.custom-editor .ql-container {
+    height: 550px; 
+    max-height: 550px; 
+    min-height: 550px;
+  }
+  
+  .custom-editor .ql-editor {
+    height: 100%;
+  }
+  
