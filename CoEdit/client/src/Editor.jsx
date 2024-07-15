@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css"; // import styles
 import "./Editor.css"; // import custom styles
 
-const EditorComponent = () => {
+const Editor = ({ id }) => {
   const [editorContent, setEditorContent] = useState("");
 
   const handleChange = (value) => {
@@ -19,6 +19,7 @@ const EditorComponent = () => {
   return (
     <div>
       <h1 style={headingStyle}>CoEdit</h1>
+      <h2>You are now in {id} document</h2>
       <ReactQuill
         value={editorContent}
         onChange={handleChange}
@@ -29,4 +30,4 @@ const EditorComponent = () => {
   );
 };
 
-export default EditorComponent;
+export default Editor;
