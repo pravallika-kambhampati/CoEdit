@@ -1,25 +1,17 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // import styles
-import "./Editor.css"; // import custom styles
+import "react-quill/dist/quill.snow.css";
+import "./Editor.css";
 
-const Editor = ({ id }) => {
+export const Editor = () => {
   const [editorContent, setEditorContent] = useState("");
 
   const handleChange = (value) => {
     setEditorContent(value);
   };
 
-  const headingStyle = {
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    textAlign: "left",
-  };
-
   return (
     <div>
-      <h1 style={headingStyle}>CoEdit</h1>
-      <h2>You are now in {id} document</h2>
       <ReactQuill
         value={editorContent}
         onChange={handleChange}
@@ -29,5 +21,3 @@ const Editor = ({ id }) => {
     </div>
   );
 };
-
-export default Editor;
