@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import { Editor } from "./Editor";
-import { io } from "socket.io-client";
 import { Home } from "./Home";
+import { Layout } from "./Layout";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  useEffect(() => {
-    const socket = io("http://localhost:3000");
-
-    socket.on("connect", () => {
-      console.log("Connected with id: " + socket.id);
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/editor" element={<Editor />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="editor" element={<RedirectToNewEditor />} />
+          <Route path="editor/:id" element={<Editor />} />
+        </Route>
       </Routes>
     </Router>
   );
 }
+
+const RedirectToNewEditor = () => {
+  const uniqueId = uuidv4();
+  return <Navigate to={`/editor/${uniqueId}`} />;
+};
 
 export default App;
